@@ -7,15 +7,14 @@
 
 import SwiftUI
 
-struct GestureView: View {
+struct GestureRecognizerView: View {
     
-    let gestureType: GestureType
+    let gestureType: GestureRecognizerType
     
     
     @State private var scale = 1.0
     @State private var dragCompleted = false
     @State private var dragOffset = CGSize.zero
-
     
     var body: some View {
         VStack {
@@ -38,7 +37,7 @@ struct GestureView: View {
     
     
     private func tapGesture() -> some View {
-       catImage()
+        catImage()
             .gesture(
                 TapGesture()
                     .onEnded { _ in
