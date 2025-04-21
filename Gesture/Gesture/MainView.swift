@@ -8,20 +8,39 @@
 import SwiftUI
 
 enum GestureType: CaseIterable, Hashable {
-    case gestureRecognizer
+    case gestureRecognizer, priorityGesture, handlePinchZoom, shakeGesture, hoveringOverView, simultaneousGesture, gestureChains, controlTapableArea, disableTaps
     
     var title: String {
         switch self {
         case .gestureRecognizer:
             "Gesture Recognizer"
+        case .priorityGesture:
+            "Priority Gesture"
+        case .handlePinchZoom:
+            "Handle Pinch Zoom"
+        case .shakeGesture:
+            "Shake Gesture"
+        case .hoveringOverView:
+            "Hovering Over View"
+        case .simultaneousGesture:
+            "Simultaneous Gesture"
+        case .gestureChains:
+            "Gesture Chains"
+        case .controlTapableArea:
+            "Control Tapable Area"
+        case .disableTaps:
+            "Disable Taps"
         }
     }
     
     var destination: some View {
         switch self {
         case .gestureRecognizer:
-            GestureRecognizer()
+            return AnyView(GestureRecognizer())
+        case .priorityGesture, .handlePinchZoom, .shakeGesture, .hoveringOverView, .simultaneousGesture, .gestureChains, .controlTapableArea, .disableTaps:
+            return AnyView(OtherGesture(self))
         }
+        
     }
 }
 
